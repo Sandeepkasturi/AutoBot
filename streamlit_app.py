@@ -66,7 +66,7 @@ def main():
         
         # AI Chatbot section
         st.header("Auto Bot Chatbot")
-         lottie_hello = load_lottieurl("https://lottie.host/20fe6bfa-9011-4c7c-8be7-e7e50418ce55/OsWC8NLWN9.json")
+        lottie_hello = load_lottieurl("https://lottie.host/20fe6bfa-9011-4c7c-8be7-e7e50418ce55/OsWC8NLWN9.json")
             st_lottie(
                 lottie_hello,
                 speed=1,
