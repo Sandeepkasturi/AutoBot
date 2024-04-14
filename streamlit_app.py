@@ -28,10 +28,11 @@ def download_generated_code(content, filename='generated_code.txt'):
     b64 = base64.b64encode(content.encode()).decode()
     href = f'<a href="data:file/txt;base64,{b64}" download="{filename}">Download Code</a>'
     st.markdown(href, unsafe_allow_html=True)
-    
+
+
 def load_lottieurl(url: str):
     r = requests.get(url)
-    if r.status_code !=200:
+    if r.status_code != 200:
         return None
     return r.json()
 
@@ -39,7 +40,7 @@ def load_lottieurl(url: str):
 # Main Streamlit application
 def main():
     st.title("Auto BOT")
-    st.image("auto_bot_1.png")
+    st.image("s.png")
     st.markdown("""
     SKAV TECH presents Auto Bot AI:""")
     st.markdown("""Functionalities:
@@ -63,73 +64,73 @@ def main():
         # Create a Generative Model instance (assuming 'gemini-pro' is a valid model)
         model = GenerativeModel('gemini-pro')
 
-        
         # AI Chatbot section
         st.header("Auto Bot Chatbot")
         lottie_hello = load_lottieurl("https://lottie.host/20fe6bfa-9011-4c7c-8be7-e7e50418ce55/OsWC8NLWN9.json")
-            st_lottie(
-                lottie_hello,
-                speed=1,
-                reverse=False,
-                loop=True,
-                quality="low",  # canvas
-                height=125,
-                width=125,
-                key=None,
-    )
-        question = st.text_input("Ask the model a question:")
-        if st.button("Ask AI"):
-            # Call your AI model and get the response
-            response = model.generate_content(question)
-            st.text("Auto Bot Response:")
-            st.write(response.text)
-            # Check if the response contains a URL
-            if "http" in response.text:
-                st.write("The response contains a URL.")
+        st_lottie(
+            lottie_hello,
+            speed=1,
+            reverse=False,
+            loop=True,
+            quality="low",  # canvas
+            height=125,
+            width=125,
+            key=None,
+        )
+    question = st.text_input("Ask the model a question:")
+    if st.button("Ask AI"):
+        # Call your AI model and get the response
+        response = model.generate_content(question)
+        st.text("Auto Bot Response:")
+        st.write(response.text)
+        # Check if the response contains a URL
+        if "http" in response.text:
+            st.write("The response contains a URL.")
 
-            # Check if the question is related to generating code
-            code_keywords = ["code", "write code", "develop code", "generate code"]
-            if any(keyword in question.lower() for keyword in code_keywords):
-                download_generated_code(response.text)
-                
-        # HTML Extraction section
-        st.header("Extract HTML Code")
-        url = st.text_input("Enter URL:")
-        if st.button("Extract HTML Code"):
-            try:
-                response = requests.get(url)
-                if response.status_code == 200:
-                    lottie_hello = load_lottieurl("https://lottie.host/cee70de5-7d0a-409d-8c58-454f3de4a241/Iziw1CgpWG.json")
-                    st_lottie(
-                        lottie_hello,
-                        speed=3,
-                        reverse=False,
-                        loop=True,
-                        quality="low",  # canvas
-                        height=125,
-                        width=125,
-                        key=None,
-    )
-                    download_html_code(response.text)
-                else:
-                    st.error(f"Failed to retrieve HTML content. Status code: {response.status_code}")
-            except Exception as e:
-                st.error(f"An error occurred: {str(e)}")
+        # Check if the question is related to generating code
+        code_keywords = ["code", "write code", "develop code", "generate code"]
+        if any(keyword in question.lower() for keyword in code_keywords):
+            download_generated_code(response.text)
 
-    # Additional buttons
-    st.markdown('---')
-    st.markdown("&copy; 2024 - All rights reserved SKAV TECH.")
-    st.subheader('Our recent projects')
-    button_col3, button_col4, button_col5 = st.columns(3)
+    # HTML Extraction section
+    st.header("Extract HTML Code")
+    url = st.text_input("Enter URL:")
+    if st.button("Extract HTML Code"):
+        try:
+            response = requests.get(url)
+            if response.status_code == 200:
+                lottie_hello = load_lottieurl(
+                    "https://lottie.host/cee70de5-7d0a-409d-8c58-454f3de4a241/Iziw1CgpWG.json")
+                st_lottie(
+                    lottie_hello,
+                    speed=3,
+                    reverse=False,
+                    loop=True,
+                    quality="low",  # canvas
+                    height=125,
+                    width=125,
+                    key=None,
+                )
+                download_html_code(response.text)
+            else:
+                st.error(f"Failed to retrieve HTML content. Status code: {response.status_code}")
+        except Exception as e:
+            st.error(f"An error occurred: {str(e)}")
 
-    if button_col3.button('DataVerse AI'):
-        webbrowser.open("https://dataverse-ai.vercel.app/")
 
-    if button_col4.button('Ulink'):
-        webbrowser.open("https://ulink-io.vercel.app")
-    if button_col5.button('SKAV TECH'):
-        webbrowser.open("https://skavtech.mydurable.com")
+# Additional buttons
+st.markdown('---')
+st.markdown("&copy; 2024 - All rights reserved SKAV TECH.")
+st.subheader('Our recent projects')
+button_col3, button_col4, button_col5 = st.columns(3)
 
+if button_col3.button('DataVerse AI'):
+    webbrowser.open("https://dataverse-ai.vercel.app/")
+
+if button_col4.button('Ulink'):
+    webbrowser.open("https://ulink-io.vercel.app")
+if button_col5.button('SKAV TECH'):
+    webbrowser.open("https://skavtech.mydurable.com")
 
 if __name__ == "__main__":
     main()
