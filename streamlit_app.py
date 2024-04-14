@@ -1,4 +1,6 @@
+import json
 import streamlit as st
+import streamlit_lottie as st_lottie
 import requests
 import webbrowser
 from google.generativeai import configure, GenerativeModel
@@ -31,6 +33,17 @@ def download_generated_code(content, filename='generated_code.txt'):
 # Main Streamlit application
 def main():
     st.title("Auto BOT")
+    lottie_hello = load_lottieurl("https://lottie.host/20fe6bfa-9011-4c7c-8be7-e7e50418ce55/OsWC8NLWN9.json")
+    st_lottie(
+        lottie_hello,
+        speed=1,
+        reverse=False,
+        loop=True,
+        quality="low",  # canvas
+        height=125,
+        width=125,
+        key=None,
+    )
     st.image("auto_bot_1.png")
     st.markdown("""
     SKAV TECH presents Auto Bot AI:""")
