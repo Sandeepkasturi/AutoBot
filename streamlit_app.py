@@ -1,6 +1,5 @@
 import json
 import streamlit as st
-import streamlit_lottie as st_lottie
 import requests
 import webbrowser
 from google.generativeai import configure, GenerativeModel
@@ -8,6 +7,7 @@ from IPython.display import Markdown
 import textwrap
 import os
 import base64
+from streamlit_lottie import st_lottie
 
 
 # Function to convert plain text to Markdown format
@@ -28,6 +28,12 @@ def download_generated_code(content, filename='generated_code.txt'):
     b64 = base64.b64encode(content.encode()).decode()
     href = f'<a href="data:file/txt;base64,{b64}" download="{filename}">Download Code</a>'
     st.markdown(href, unsafe_allow_html=True)
+    
+def load_lottieurl(url: str):
+    r = requests.get(url)
+    if r.status_code !=200:
+        return None
+    return r.json()
 
 
 # Main Streamlit application
