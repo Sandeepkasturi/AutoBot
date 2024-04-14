@@ -102,10 +102,10 @@ def main():
             try:
                 response = requests.get(url)
                 if response.status_code == 200:
-                    lottie_hello = load_lottieurl("https://lottie.host/20fe6bfa-9011-4c7c-8be7-e7e50418ce55/OsWC8NLWN9.json")
+                    lottie_hello = load_lottieurl("https://lottie.host/cee70de5-7d0a-409d-8c58-454f3de4a241/Iziw1CgpWG.json")
                     st_lottie(
                         lottie_hello,
-                        speed=1,
+                        speed=3,
                         reverse=False,
                         loop=True,
                         quality="low",  # canvas
