@@ -39,29 +39,18 @@ def load_lottieurl(url: str):
 # Main Streamlit application
 def main():
     st.title("Auto BOT")
-    lottie_hello = load_lottieurl("https://lottie.host/20fe6bfa-9011-4c7c-8be7-e7e50418ce55/OsWC8NLWN9.json")
-    st_lottie(
-        lottie_hello,
-        speed=1,
-        reverse=False,
-        loop=True,
-        quality="low",  # canvas
-        height=125,
-        width=125,
-        key=None,
-    )
     st.image("auto_bot_1.png")
     st.markdown("""
     SKAV TECH presents Auto Bot AI:""")
     st.markdown("""Functionalities:
-     1. Extracts HTML code from a URL.
-     2. Generates responses using SKAV AI Chatbot.
+     1. Extracts HTML code from any URL.
+     2. Generates responses using Auto Bot Chatbot.
      3. Available for Downloading code files.
 
      Auto BOT is for educational purposes only.
      We are not responsible for any illegal and unethical activities done by You.
     """)
-    st.markdown("Get API key from Google AI Studio")
+    st.markdown("Get Gemini API key from Google AI Studio")
 
     # Prompt user for API key
     api_key = st.text_input("Enter your Generative AI API key:")
@@ -79,8 +68,21 @@ def main():
         st.header("Auto Bot Chatbot")
         question = st.text_input("Ask the model a question:")
         if st.button("Ask AI"):
+            
             # Call your AI model and get the response
             response = model.generate_content(question)
+            lottie_hello = load_lottieurl("https://lottie.host/20fe6bfa-9011-4c7c-8be7-e7e50418ce55/OsWC8NLWN9.json")
+            st_lottie(
+                lottie_hello,
+                speed=1,
+                reverse=False,
+                loop=True,
+                quality="low",  # canvas
+                height=125,
+                width=125,
+                key=None,
+    )
+  
             st.text("Auto Bot Response:")
             st.write(response.text)
 
