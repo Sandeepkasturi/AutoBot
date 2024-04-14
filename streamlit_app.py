@@ -66,10 +66,7 @@ def main():
         
         # AI Chatbot section
         st.header("Auto Bot Chatbot")
-        question = st.text_input("Ask the model a question:")
-        if st.button("Ask AI"):
-            
-            lottie_hello = load_lottieurl("https://lottie.host/20fe6bfa-9011-4c7c-8be7-e7e50418ce55/OsWC8NLWN9.json")
+         lottie_hello = load_lottieurl("https://lottie.host/20fe6bfa-9011-4c7c-8be7-e7e50418ce55/OsWC8NLWN9.json")
             st_lottie(
                 lottie_hello,
                 speed=1,
@@ -80,13 +77,12 @@ def main():
                 width=125,
                 key=None,
     )
+        question = st.text_input("Ask the model a question:")
+        if st.button("Ask AI"):
             # Call your AI model and get the response
             response = model.generate_content(question)
-  
             st.text("Auto Bot Response:")
-            
             st.write(response.text)
-
             # Check if the response contains a URL
             if "http" in response.text:
                 st.write("The response contains a URL.")
