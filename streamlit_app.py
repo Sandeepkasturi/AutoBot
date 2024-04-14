@@ -40,7 +40,7 @@ def load_lottieurl(url: str):
 # Main Streamlit application
 def main():
     st.title("Auto BOT")
-    st.image("s.png")
+    st.image("auto_bot_1.png")
     st.markdown("""
     SKAV TECH presents Auto Bot AI:""")
     st.markdown("""Functionalities:
